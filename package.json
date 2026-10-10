@@ -1,0 +1,38 @@
+{
+  "name": "nafess",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nafess: anonymous mental-health peer support (AR/FR/EN).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "tokens": "node scripts/tokens.mjs",
+    "check:tokens": "node scripts/tokens.mjs --check",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check": "npm run check:tokens && npm run check:i18n && npm run lint && npm run typecheck && npm test"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
+  }
+}
