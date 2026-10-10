@@ -151,3 +151,4 @@ soft community tints, warm clay for errors and crisis (never alarm red), generou
 - 2026-10-10 — Phase 4 v1 built: all 20 screens in ar/fr/en, browser-only mock services. Not deployed.
 - 2026-10-10 — Phase 5 review done (`docs/review.md`): 3 Critical, 12 Important resolved; 2 Important and 4 Polish open.
 - 2026-10-10 — Waiting for owner: approve brief + design system + v1, decide on seed reaction counts, hosting.
+- 2026-10-10 — v2 started on branch `claude/nafess-v2` (never merged; v1 stays on `claude/nafess-v1`). Figma file "Nafess v2" created in team Nafess: https://www.figma.com/design/zHLiSInRFHFuaumJSWzxl3 . Owner chose Figma AI to generate the new design (prompt in `docs/figma-v2-prompt.md`).
