@@ -108,7 +108,7 @@ export default function StoryPage({ params }: { params: Promise<{ id: string }> 
           </h2>
           {s.status === "published" && account && (
             <div className="mt-5">
-              <ReplyComposer storyId={s.id} parentId={null} onPosted={() => replies.reload(true)} />
+              <ReplyComposer storyId={s.id} parentId={null} onPosted={() => (replies.reload(true), story.reload(true))} />
             </div>
           )}
           {!account && (
@@ -127,7 +127,7 @@ export default function StoryPage({ params }: { params: Promise<{ id: string }> 
                 <ul className="grid gap-4">
                   {replies.state.data.map((r) => (
                     <li key={r.id}>
-                      <ReplyItem reply={r} storyId={s.id} onChange={() => replies.reload(true)} />
+                      <ReplyItem reply={r} storyId={s.id} onChange={() => (replies.reload(true), story.reload(true))} />
                     </li>
                   ))}
                 </ul>

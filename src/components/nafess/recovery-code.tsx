@@ -10,7 +10,7 @@ export function RecoveryCodeBox({ code }: { code: string }) {
   const toast = useToast();
   return (
     <div className="rounded-lg border-[1.5px] border-dashed border-primary bg-primary-soft p-5 text-center text-primary-ink">
-      <p className="font-mono text-2xl tracking-[0.12em] sm:text-3xl" dir="ltr" translate="no">
+      <p className="font-mono text-xl tracking-wider whitespace-nowrap sm:text-3xl" dir="ltr" translate="no">
         {code}
       </p>
       <Button

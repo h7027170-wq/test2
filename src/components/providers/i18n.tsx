@@ -20,13 +20,15 @@ export function I18nProvider({ locale, messages, children }: { locale: Locale; m
       locale,
       t,
       href: (path: string) => `/${locale}${path === "/" ? "" : path}`,
+      // Intl handles plural rules (Arabic has six forms), so "4 minutes" reads correctly everywhere.
       relativeTime: (iso: string) => {
         const mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60_000));
         if (mins < 1) return t("common.justNow");
-        if (mins < 60) return t("common.minutesAgo", { n: mins });
+        const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "always", style: "long" });
+        if (mins < 60) return rtf.format(-mins, "minute");
         const h = Math.round(mins / 60);
-        if (h < 24) return t("common.hoursAgo", { n: h });
-        return t("common.daysAgo", { n: Math.round(h / 24) });
+        if (h < 24) return rtf.format(-h, "hour");
+        return rtf.format(-Math.round(h / 24), "day");
       },
     }),
     [locale, t],

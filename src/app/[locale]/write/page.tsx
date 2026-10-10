@@ -98,7 +98,7 @@ function Writer() {
     const held = result.status === "held";
     return (
       <div className="container-page py-14">
-        <div className="mx-auto max-w-lg rounded-xl border border-line bg-surface p-8 text-center" role="status">
+        <div id="write-result" tabIndex={-1} className="mx-auto max-w-lg rounded-xl border border-line bg-surface p-8 text-center outline-none" role="status">
           <span className={cn("mx-auto inline-flex size-16 items-center justify-center rounded-full", held ? "bg-sky-soft text-sky-ink" : "bg-sage-soft text-sage-ink")}>
             <Icon name={held ? "shield" : "check"} className="size-7" />
           </span>
@@ -163,7 +163,13 @@ function Writer() {
     } finally {
       setBusy(false);
     }
-    if (res.ok) setResult(res);
+    if (res.ok) {
+      setResult(res);
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0 });
+        document.getElementById("write-result")?.focus();
+      });
+    }
     else if (res.error === "rate-limited") setErrors({ rate: t("write.errors.rate") });
   }
 

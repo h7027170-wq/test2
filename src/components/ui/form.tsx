@@ -127,6 +127,7 @@ export function ChoiceCard({
   accent?: string;
   className?: string;
 }) {
+  const titleId = useId();
   return (
     <label
       className={cn(
@@ -135,10 +136,12 @@ export function ChoiceCard({
         className,
       )}
     >
-      <input type={type} name={name} checked={checked} onChange={onChange} className="sr-only" />
+      <input type={type} name={name} checked={checked} onChange={onChange} className="sr-only" aria-labelledby={titleId} />
       {icon && (typeof icon === "string" ? <span className={cn("inline-flex size-10 shrink-0 items-center justify-center rounded-full", accent ?? "bg-surface-2")}><Icon name={icon as IconName} /></span> : icon)}
       <span className="min-w-0 flex-1">
-        <span className="block font-medium">{title}</span>
+        <span id={titleId} className="block font-medium">
+          {title}
+        </span>
         {description && <span className="mt-0.5 block text-sm text-ink-2">{description}</span>}
       </span>
       <span className={cn("mt-0.5 inline-flex size-6 shrink-0 items-center justify-center border-[1.5px]", type === "radio" ? "rounded-full" : "rounded-sm", checked ? "border-primary bg-primary text-primary-fg" : "border-field")}>
@@ -168,7 +171,7 @@ export function Chip({ selected, children, className, ...props }: { selected?: b
 export function ErrorSummary({ title, errors }: { title: string; errors: { id?: string; message: string }[] }) {
   if (!errors.length) return null;
   return (
-    <div role="alert" tabIndex={-1} className="rounded-md border-[1.5px] border-warm bg-warm-soft p-4 text-warm-ink">
+    <div role="alert" tabIndex={-1} data-error-summary className="scroll-mt-28 rounded-md border-[1.5px] border-warm bg-warm-soft p-4 text-warm-ink">
       <p className="font-semibold">{title}</p>
       <ul className="mt-2 list-disc ps-5">
         {errors.map((e) => (

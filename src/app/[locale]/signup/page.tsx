@@ -44,6 +44,7 @@ export default function SignUpPage() {
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState<{ code?: string; token?: string } | null>(null);
   const [codeSaved, setCodeSaved] = useState(false);
+  const [underAge, setUnderAge] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   // Live nickname availability, debounced.
@@ -67,7 +68,7 @@ export default function SignUpPage() {
 
   useEffect(() => {
     headingRef.current?.focus();
-  }, [step, done]);
+  }, [step, done, underAge]);
 
   const strength = passwordStrength(password, nickname);
   const steps = [t("signup.steps.communities"), t("signup.steps.identity"), t("signup.steps.security")];
@@ -94,7 +95,12 @@ export default function SignUpPage() {
     ev.preventDefault();
     const e = validate(step);
     setErrors(e);
-    if (Object.keys(e).length) return;
+    if (Object.keys(e).length) {
+      requestAnimationFrame(() => document.querySelector<HTMLElement>("[data-error-summary]")?.focus());
+      return;
+    }
+    // The age refusal appears only on submit, never while arrowing through the select (WCAG 3.2.2).
+    if (step === 1 && age === "under18") return setUnderAge(true);
     if (step < 2) return setStep(step + 1);
     setBusy(true);
     let res;
@@ -124,7 +130,7 @@ export default function SignUpPage() {
     setDone({ code: res.recoveryCode, token: res.verifyToken });
   }
 
-  if (age === "under18") {
+  if (underAge) {
     return (
       <AuthShell>
         <h1 ref={headingRef} tabIndex={-1} className="text-3xl outline-none">
@@ -134,7 +140,14 @@ export default function SignUpPage() {
         <div className="mt-6">
           <CrisisContent showBreathing={false} />
         </div>
-        <Button variant="secondary" className="mt-6" onClick={() => setAge("")}>
+        <Button
+          variant="secondary"
+          className="mt-6"
+          onClick={() => {
+            setAge("");
+            setUnderAge(false);
+          }}
+        >
           {t("common.back")}
         </Button>
       </AuthShell>

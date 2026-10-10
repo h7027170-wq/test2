@@ -236,18 +236,18 @@ export function SiteHeader() {
           </ul>
         </nav>
         <div className="ms-auto flex items-center gap-1 sm:gap-2">
-          <CrisisButton className="hidden sm:inline-flex" />
-          <CrisisButton iconOnly className="sm:hidden" />
+          <CrisisButton className="hidden whitespace-nowrap lg:inline-flex" />
+          <CrisisButton iconOnly className="lg:hidden" />
           <div className="hidden md:flex md:items-center">
             <LocaleSwitch />
             <ThemeToggle />
           </div>
           {status === "ready" && !account && (
             <div className="hidden items-center gap-2 md:flex">
-              <ButtonLink href={href("/signin")} variant="ghost" size="sm">
+              <ButtonLink href={href("/signin")} variant="ghost" size="sm" className="whitespace-nowrap">
                 {t("nav.signIn")}
               </ButtonLink>
-              <ButtonLink href={href("/signup")} size="sm">
+              <ButtonLink href={href("/signup")} size="sm" className="whitespace-nowrap">
                 {t("nav.signUp")}
               </ButtonLink>
             </div>
@@ -284,7 +284,7 @@ export function SiteHeader() {
             ))}
           </ul>
           <div className="mt-5 grid gap-3">
-            <CrisisButton className="w-full sm:hidden" />
+            <CrisisButton className="w-full" />
             {!account ? (
               <div className="grid grid-cols-2 gap-3">
                 <ButtonLink href={href("/signin")} variant="secondary">

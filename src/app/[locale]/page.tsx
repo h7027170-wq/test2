@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-clip">
         <div aria-hidden className="pointer-events-none absolute -top-40 end-[-10%] size-[520px] rounded-full bg-primary-soft opacity-70 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute -bottom-40 start-[-10%] size-[420px] rounded-full bg-lilac-soft opacity-60 blur-3xl" />
         <div className="container-page relative grid gap-10 py-14 sm:py-20 lg:grid-cols-[1.2fr_1fr] lg:items-center">
