@@ -25,6 +25,7 @@ export default function RoomPage({ params }: { params: Promise<{ id: string }> }
   const [local, setLocal] = useState<ChatMessage[]>([]);
   const [draft, setDraft] = useState("");
   const [typing, setTyping] = useState(true);
+  const [sendFailed, setSendFailed] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
   const warn = useMemo(() => findPii(draft).length > 0, [draft]);
 
@@ -113,11 +114,21 @@ export default function RoomPage({ params }: { params: Promise<{ id: string }> }
               onSubmit={async (e) => {
                 e.preventDefault();
                 if (!draft.trim()) return;
-                const msg = await sendMessage(r.id, draft.trim());
-                setLocal((l) => [...l, msg]);
-                setDraft("");
+                try {
+                  const msg = await sendMessage(r.id, draft.trim());
+                  setLocal((l) => [...l, msg]);
+                  setDraft("");
+                  setSendFailed(false);
+                } catch {
+                  setSendFailed(true);
+                }
               }}
             >
+              {sendFailed && (
+                <p className="text-sm font-medium text-warm-ink" role="alert">
+                  {t("common.actionFailed")}
+                </p>
+              )}
               {warn && (
                 <p className="flex items-center gap-2 text-sm font-medium text-warm-ink" role="alert">
                   <Icon name="alert" className="size-4" />

@@ -49,6 +49,7 @@ interface SeedStory {
   body: string;
   veil?: string;
   hoursAgo: number;
+  /** Demo engagement for the prototype only. Remove before launch: no invented numbers in production. */
   reactions: Partial<Record<ReactionKind, number>>;
   held?: boolean;
 }

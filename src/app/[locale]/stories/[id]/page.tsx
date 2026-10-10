@@ -145,6 +145,7 @@ function ReactionBar({ story }: { story: StoryView }) {
   const { t, href } = useI18n();
   const { account } = useSession();
   const router = useRouter();
+  const toast = useToast();
   const [reactions, setReactions] = useState(story.reactions);
   return (
     <div role="group" aria-label={t("story.reactions.label")} className="mt-10 flex flex-wrap gap-2">
@@ -159,7 +160,11 @@ function ReactionBar({ story }: { story: StoryView }) {
             aria-label={t("story.reactions.count", { label, n: reactions[k].length })}
             onClick={async () => {
               if (!account) return router.push(href("/signin"));
-              setReactions(await toggleReaction(story.id, k));
+              try {
+                setReactions(await toggleReaction(story.id, k));
+              } catch {
+                toast(t("common.actionFailed"));
+              }
             }}
             className={cn(
               "inline-flex min-h-11 items-center gap-2 rounded-pill border-[1.5px] px-4 text-sm font-medium transition-colors",
@@ -200,9 +205,13 @@ function StoryActions({ story }: { story: StoryView }) {
         aria-pressed={saved}
         onClick={async () => {
           if (!account) return needAccount();
-          const v = await toggleSave(story.id);
-          setSaved(v);
-          toast(t(v ? "story.savedToast" : "story.unsavedToast"));
+          try {
+            const v = await toggleSave(story.id);
+            setSaved(v);
+            toast(t(v ? "story.savedToast" : "story.unsavedToast"));
+          } catch {
+            toast(t("common.actionFailed"));
+          }
         }}
         className={cn(saved && "border-primary bg-primary-soft text-primary-ink")}
       >
@@ -317,6 +326,7 @@ function ReportDialog({ open, onClose, target }: { open: boolean; onClose: () =>
 function ReplyItem({ reply, storyId, onChange, nested }: { reply: ReplyView; storyId: string; onChange: () => void; nested?: boolean }) {
   const { t, relativeTime } = useI18n();
   const { account } = useSession();
+  const toast = useToast();
   const [replying, setReplying] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const related = !!account && reply.relates.includes(account.id);
@@ -351,8 +361,12 @@ function ReplyItem({ reply, storyId, onChange, nested }: { reply: ReplyView; sto
             icon="users"
             aria-pressed={related}
             onClick={async () => {
-              await toggleReplyRelate(reply.id);
-              onChange();
+              try {
+                await toggleReplyRelate(reply.id);
+                onChange();
+              } catch {
+                toast(t("common.actionFailed"));
+              }
             }}
             className={cn("no-underline!", related && "text-primary-ink")}
           >
@@ -398,14 +412,23 @@ function ReplyComposer({ storyId, parentId, onPosted, label, autoFocus }: { stor
   const [body, setBody] = useState("");
   const [busy, setBusy] = useState(false);
   const [held, setHeld] = useState(false);
+  const [failed, setFailed] = useState(false);
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
         if (!body.trim()) return;
         setBusy(true);
-        const res = await addReply(storyId, parentId, body);
-        setBusy(false);
+        setFailed(false);
+        let res;
+        try {
+          res = await addReply(storyId, parentId, body);
+        } catch {
+          setFailed(true);
+          return;
+        } finally {
+          setBusy(false);
+        }
         if (res.ok) {
           setBody("");
           setHeld(res.held);
@@ -420,6 +443,11 @@ function ReplyComposer({ storyId, parentId, onPosted, label, autoFocus }: { stor
       {held && (
         <Notice tone="info" icon="shield" className="mt-3">
           {t("story.replyHeld")}
+        </Notice>
+      )}
+      {failed && (
+        <Notice tone="warm" className="mt-3">
+          <span role="alert">{t("common.actionFailed")}</span>
         </Notice>
       )}
       <div className="mt-3 flex justify-end">

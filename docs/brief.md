@@ -147,3 +147,7 @@ soft community tints, warm clay for errors and crisis (never alarm red), generou
 - 2026-10-10 — Owner asked to run straight to version 1 without checkpoints (comparison test of the pipeline). Phases 0–2 and 4 run back to back; approvals collected at the end.
 - 2026-10-10 — Phase 1 skipped (no references). Phase 3 Figma skipped for v1 (live prototype is the mockup).
 - 2026-10-10 — Codex used as second-opinion reviewer in Phase 5. No deploy (hosting undecided).
+- 2026-10-10 — Phase 2 drafted: tokens in `design-system/tokens.json`, 70/70 contrast pairs pass AA in both themes. Codex reviewed it; fixes applied (placeholder token, more pairs, generator checks).
+- 2026-10-10 — Phase 4 v1 built: all 20 screens in ar/fr/en, browser-only mock services. Not deployed.
+- 2026-10-10 — Phase 5 review done (`docs/review.md`): 3 Critical, 12 Important resolved; 2 Important and 4 Polish open.
+- 2026-10-10 — Waiting for owner: approve brief + design system + v1, decide on seed reaction counts, hosting.
