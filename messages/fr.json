@@ -27,7 +27,9 @@
     "errorTitle": "Quelque chose n'a pas chargé",
     "errorBody": "Ce n'est pas vous. Vérifiez votre connexion et réessayez.",
     "prototypeBanner": "Prototype : les comptes et les publications sont simulés et restent dans ce navigateur.",
-    "resetDemo": "Réinitialiser la démo"
+    "resetDemo": "Réinitialiser la démo",
+    "actionFailed": "Ça n'est pas passé. Votre texte est toujours là ; réessayez.",
+    "copyFailed": "Impossible de copier. Sélectionnez le lien dans la barre d'adresse."
   },
   "nav": {
     "main": "Principal",
@@ -87,9 +89,18 @@
     "secondary": "Lire d'abord",
     "how": {
       "title": "Comment ça marche",
-      "step1": { "title": "Choisissez un pseudo", "body": "Pas de vrai nom, pas de numéro. Votre tranche d'âge et votre pays restent privés." },
-      "step2": { "title": "Rejoignez vos communautés", "body": "Une communauté par trouble, pour lire des gens qui comprennent vraiment." },
-      "step3": { "title": "Lisez, réagissez, partagez", "body": "Publiez une histoire, un point du jour ou une petite victoire quand vous êtes prêt·e. Ou lisez simplement." }
+      "step1": {
+        "title": "Choisissez un pseudo",
+        "body": "Pas de vrai nom, pas de numéro. Votre tranche d'âge et votre pays restent privés."
+      },
+      "step2": {
+        "title": "Rejoignez vos communautés",
+        "body": "Une communauté par trouble, pour lire des gens qui comprennent vraiment."
+      },
+      "step3": {
+        "title": "Lisez, réagissez, partagez",
+        "body": "Publiez une histoire, un point du jour ou une petite victoire quand vous êtes prêt·e. Ou lisez simplement."
+      }
     },
     "communitiesTitle": "Communautés",
     "storiesTitle": "Histoires récentes",
@@ -131,21 +142,62 @@
     "notFound": "Cette communauté n'existe pas.",
     "placeholderNote": "Cette liste est provisoire en attendant la liste définitive.",
     "list": {
-      "depression": { "name": "Dépression", "desc": "Pour les jours lourds et ceux qui le sont un peu moins." },
-      "anxiety": { "name": "Anxiété", "desc": "L'inquiétude qui ne s'éteint pas, et ce qui aide un peu." },
-      "panic": { "name": "Attaques de panique", "desc": "Quand le corps sonne l'alarme. Vous n'êtes pas seul·e." },
-      "schizophrenia": { "name": "Schizophrénie", "desc": "Vivre avec la psychose, le traitement, et être compris·e." },
-      "bipolar": { "name": "Bipolarité", "desc": "Les hauts, les bas, et la recherche d'un sol stable." },
-      "ocd": { "name": "TOC", "desc": "Pensées intrusives et rituels, sans honte." },
-      "trauma": { "name": "Trauma et TSPT", "desc": "Porter ce qui s'est passé, à votre rythme." },
-      "eating": { "name": "Troubles alimentaires", "desc": "Nourriture, corps et rétablissement, avec douceur." },
-      "adhd": { "name": "TDAH", "desc": "Concentration, oublis, et petites victoires qui comptent." },
-      "grief": { "name": "Deuil", "desc": "L'absence de quelqu'un, et apprendre à la porter." }
-    }
+      "depression": {
+        "name": "Dépression",
+        "desc": "Pour les jours lourds et ceux qui le sont un peu moins."
+      },
+      "anxiety": {
+        "name": "Anxiété",
+        "desc": "L'inquiétude qui ne s'éteint pas, et ce qui aide un peu."
+      },
+      "panic": {
+        "name": "Attaques de panique",
+        "desc": "Quand le corps sonne l'alarme. Vous n'êtes pas seul·e."
+      },
+      "schizophrenia": {
+        "name": "Schizophrénie",
+        "desc": "Vivre avec la psychose, le traitement, et être compris·e."
+      },
+      "bipolar": {
+        "name": "Bipolarité",
+        "desc": "Les hauts, les bas, et la recherche d'un sol stable."
+      },
+      "ocd": {
+        "name": "TOC",
+        "desc": "Pensées intrusives et rituels, sans honte."
+      },
+      "trauma": {
+        "name": "Trauma et TSPT",
+        "desc": "Porter ce qui s'est passé, à votre rythme."
+      },
+      "eating": {
+        "name": "Troubles alimentaires",
+        "desc": "Nourriture, corps et rétablissement, avec douceur."
+      },
+      "adhd": {
+        "name": "TDAH",
+        "desc": "Concentration, oublis, et petites victoires qui comptent."
+      },
+      "grief": {
+        "name": "Deuil",
+        "desc": "L'absence de quelqu'un, et apprendre à la porter."
+      }
+    },
+    "emptyListTitle": "Pas encore de communautés"
   },
   "story": {
-    "kinds": { "story": "Histoire", "checkin": "Point du jour", "win": "Petite victoire" },
-    "moods": { "heavy": "lourd", "low": "bas", "okay": "ça va", "steady": "stable", "light": "léger" },
+    "kinds": {
+      "story": "Histoire",
+      "checkin": "Point du jour",
+      "win": "Petite victoire"
+    },
+    "moods": {
+      "heavy": "lourd",
+      "low": "bas",
+      "okay": "ça va",
+      "steady": "stable",
+      "light": "léger"
+    },
     "moodLabel": "Humeur : {mood}",
     "by": "par {name}",
     "in": "dans {community}",
@@ -203,7 +255,8 @@
     "note": "Quelque chose à ajouter ?",
     "submit": "Envoyer le signalement",
     "sent": "Merci. Un modérateur va regarder.",
-    "chooseReason": "Choisissez une raison"
+    "chooseReason": "Choisissez une raison",
+    "rateLimited": "Vous avez envoyé beaucoup de signalements cette heure-ci. Réessayez un peu plus tard."
   },
   "write": {
     "title": "Écrire",
@@ -297,7 +350,12 @@
     "noCommunities": "Vous n'avez rejoint aucune communauté.",
     "myStories": "Mes histoires",
     "noStories": "Vous n'avez encore rien publié.",
-    "status": { "published": "En ligne", "held": "En relecture", "rejected": "Non publiée", "removed": "Retirée" },
+    "status": {
+      "published": "En ligne",
+      "held": "En relecture",
+      "rejected": "Non publiée",
+      "removed": "Retirée"
+    },
     "recovery": "Récupération du compte",
     "recoveryCode": "Code de récupération",
     "recoveryEmail": "E-mail de récupération",
@@ -328,10 +386,22 @@
     "quiet": "Calme",
     "enter": "Entrer",
     "rooms": {
-      "evening-circle": { "name": "Cercle du soir", "desc": "Se poser ensemble après une longue journée." },
-      "night-owls": { "name": "Oiseaux de nuit", "desc": "Pour les heures où le sommeil ne vient pas." },
-      "small-wins": { "name": "Petites victoires", "desc": "Partagez tout ce que vous avez réussi aujourd'hui." },
-      "remembering": { "name": "Se souvenir", "desc": "Un salon calme pour celles et ceux qui nous manquent." }
+      "evening-circle": {
+        "name": "Cercle du soir",
+        "desc": "Se poser ensemble après une longue journée."
+      },
+      "night-owls": {
+        "name": "Oiseaux de nuit",
+        "desc": "Pour les heures où le sommeil ne vient pas."
+      },
+      "small-wins": {
+        "name": "Petites victoires",
+        "desc": "Partagez tout ce que vous avez réussi aujourd'hui."
+      },
+      "remembering": {
+        "name": "Se souvenir",
+        "desc": "Un salon calme pour celles et ceux qui nous manquent."
+      }
     },
     "emptyTitle": "Pas encore de messages",
     "emptyBody": "Dites bonjour, ou restez simplement un moment avec nous.",
@@ -340,7 +410,9 @@
     "typing": "{name} écrit",
     "piiWarning": "Attention : cela ressemble à un numéro, un e-mail ou un lien. Les autres ici peuvent le voir.",
     "guest": "Connectez-vous pour participer.",
-    "notFound": "Ce salon n'existe pas."
+    "notFound": "Ce salon n'existe pas.",
+    "noRoomsTitle": "Aucun salon ouvert",
+    "noRoomsBody": "Des salons ouvriront ici bientôt. En attendant, les histoires sont toujours là."
   },
   "about": {
     "title": "À propos de Nafess",
@@ -356,11 +428,26 @@
     "title": "Règles de la communauté",
     "lead": "Quelques règles simples pour que chacun·e puisse respirer ici.",
     "rules": {
-      "anon": { "title": "Restez anonyme", "body": "Pas de vrais noms, numéros, adresses, liens ou identifiants de réseaux sociaux, ni les vôtres ni ceux des autres. Les publications qui en contiennent sont relues et ces détails retirés." },
-      "kind": { "title": "Soyez bienveillant·e", "body": "Répondez comme vous aimeriez qu'on vous réponde un mauvais jour. Sans juger, sans faire la leçon." },
-      "advice": { "title": "Partagez, ne prescrivez pas", "body": "Dites ce qui vous a aidé. Ne dites à personne d'arrêter ou de changer un traitement." },
-      "veil": { "title": "Ajoutez des avertissements", "body": "Si votre histoire parle d'automutilation, de violences ou d'autres sujets difficiles, ajoutez un avertissement." },
-      "help": { "title": "Demandez de l'aide", "body": "Si quelqu'un semble en danger, signalez la publication. Un modérateur la verra." }
+      "anon": {
+        "title": "Restez anonyme",
+        "body": "Pas de vrais noms, numéros, adresses, liens ou identifiants de réseaux sociaux, ni les vôtres ni ceux des autres. Les publications qui en contiennent sont relues et ces détails retirés."
+      },
+      "kind": {
+        "title": "Soyez bienveillant·e",
+        "body": "Répondez comme vous aimeriez qu'on vous réponde un mauvais jour. Sans juger, sans faire la leçon."
+      },
+      "advice": {
+        "title": "Partagez, ne prescrivez pas",
+        "body": "Dites ce qui vous a aidé. Ne dites à personne d'arrêter ou de changer un traitement."
+      },
+      "veil": {
+        "title": "Ajoutez des avertissements",
+        "body": "Si votre histoire parle d'automutilation, de violences ou d'autres sujets difficiles, ajoutez un avertissement."
+      },
+      "help": {
+        "title": "Demandez de l'aide",
+        "body": "Si quelqu'un semble en danger, signalez la publication. Un modérateur la verra."
+      }
     }
   },
   "auth": {
@@ -375,7 +462,11 @@
   "signup": {
     "title": "Rejoindre Nafess",
     "lead": "Trois petites étapes. Pas de vrai nom, pas de numéro.",
-    "steps": { "communities": "Communautés", "identity": "Identité", "security": "Sécurité" },
+    "steps": {
+      "communities": "Communautés",
+      "identity": "Identité",
+      "security": "Sécurité"
+    },
     "stepOf": "Étape {n} sur {total}",
     "communitiesTitle": "Quelles communautés vous parlent ?",
     "communitiesHelp": "Choisissez-en au moins une. Vous pourrez changer plus tard.",
@@ -404,7 +495,13 @@
     "under18Body": "Désolé, il faut avoir 18 ans ou plus pour s'inscrire. Si c'est difficile en ce moment, parlez à un adulte de confiance, et utilisez la page d'aide quand vous voulez.",
     "securityTitle": "Protégez votre compte",
     "passwordHelp": "Au moins 10 caractères. Une petite phrase marche bien.",
-    "strength": { "0": "", "1": "Trop faible", "2": "Correct", "3": "Bon", "4": "Solide" },
+    "strength": {
+      "0": "",
+      "1": "Trop faible",
+      "2": "Correct",
+      "3": "Bon",
+      "4": "Solide"
+    },
     "strengthLabel": "Solidité : {label}",
     "weakError": "Choisissez un mot de passe plus long (au moins 10 caractères, pas votre pseudo).",
     "confirmPassword": "Répétez le mot de passe",
@@ -481,7 +578,10 @@
     "forbidden": "Seuls les modérateurs peuvent voir cette page.",
     "emptyQueue": "Rien en attente. Merci de protéger Nafess.",
     "emptyReports": "Aucun signalement ouvert.",
-    "holdReasons": { "pii": "Détails identifiants", "sensitive-community": "Tout est relu" },
+    "holdReasons": {
+      "pii": "Détails identifiants",
+      "sensitive-community": "Tout est relu"
+    },
     "found": "Trouvé : {items}",
     "willPublish": "Sera publié ainsi :",
     "approve": "Approuver",
@@ -502,7 +602,12 @@
     "dismissed": "Signalement classé",
     "removed": "Contenu retiré",
     "auditEmpty": "Aucune décision pour l'instant.",
-    "auditActions": { "approve": "a approuvé", "reject": "a refusé", "dismiss": "a classé un signalement sur", "remove": "a retiré" },
+    "auditActions": {
+      "approve": "a approuvé",
+      "reject": "a refusé",
+      "dismiss": "a classé un signalement sur",
+      "remove": "a retiré"
+    },
     "counts": "{held} en attente · {reports} signalements"
   },
   "notFound": {

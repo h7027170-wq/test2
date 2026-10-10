@@ -21,8 +21,10 @@ export function RecoveryCodeBox({ code }: { code: string }) {
         onClick={async () => {
           try {
             await navigator.clipboard.writeText(code);
-          } catch {}
-          toast(t("signup.codeCopied"));
+            toast(t("signup.codeCopied"));
+          } catch {
+            toast(t("common.copyFailed"));
+          }
         }}
       >
         {t("signup.copyCode")}

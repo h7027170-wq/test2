@@ -90,6 +90,8 @@ export function ConfirmDialog({
     try {
       await onConfirm(reason.trim());
       close();
+    } catch {
+      setError(t("common.actionFailed"));
     } finally {
       setBusy(false);
     }
@@ -112,10 +114,15 @@ export function ConfirmDialog({
       }
     >
       {body && <div className="text-ink-2">{body}</div>}
+      {error && !reasonLabel && (
+        <p role="alert" className="mt-3 font-medium text-warm-ink">
+          {error}
+        </p>
+      )}
       {reasonLabel && (
         <Field label={reasonLabel} error={error} className="mt-4">
           {({ id, describedBy, invalid }) => (
-            <Textarea id={id} aria-describedby={describedBy} invalid={invalid} className="min-h-24" value={reason} onChange={(e) => setReason(e.target.value)} maxLength={300} />
+            <Textarea id={id} aria-describedby={describedBy} invalid={invalid} className="min-h-24" value={reason} onChange={(e) => setReason(e.target.value)} maxLength={300} dir="auto" />
           )}
         </Field>
       )}

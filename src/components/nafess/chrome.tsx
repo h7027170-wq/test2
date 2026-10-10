@@ -138,14 +138,18 @@ export function ThemeToggle() {
   );
 }
 
-export function CrisisButton({ className }: { className?: string }) {
+export function CrisisButton({ className, iconOnly }: { className?: string; iconOnly?: boolean }) {
   const { t, href } = useI18n();
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button variant="crisis" size="sm" icon="lifebuoy" onClick={() => setOpen(true)} className={className}>
-        {t("crisis.button")}
-      </Button>
+      {iconOnly ? (
+        <IconButton icon="lifebuoy" label={t("crisis.button")} onClick={() => setOpen(true)} className={cn("border-[1.5px] border-warm text-warm-ink hover:bg-warm-soft hover:text-warm-ink", className)} />
+      ) : (
+        <Button variant="crisis" size="sm" icon="lifebuoy" onClick={() => setOpen(true)} className={className}>
+          {t("crisis.button")}
+        </Button>
+      )}
       <Dialog open={open} onClose={() => setOpen(false)} title={t("crisis.title")}>
         <CrisisContent />
         <div className="mt-6 flex flex-wrap gap-3">
@@ -233,6 +237,7 @@ export function SiteHeader() {
         </nav>
         <div className="ms-auto flex items-center gap-1 sm:gap-2">
           <CrisisButton className="hidden sm:inline-flex" />
+          <CrisisButton iconOnly className="sm:hidden" />
           <div className="hidden md:flex md:items-center">
             <LocaleSwitch />
             <ThemeToggle />

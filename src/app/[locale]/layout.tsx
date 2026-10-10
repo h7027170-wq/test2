@@ -9,6 +9,7 @@ import { I18nProvider } from "@/components/providers/i18n";
 import { SessionProvider } from "@/components/providers/session";
 import { ToastProvider } from "@/components/providers/toast";
 import { SiteFooter, SiteHeader } from "@/components/nafess/chrome";
+import tokens from "../../../design-system/tokens.json";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f4ee" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f1615" },
+    { media: "(prefers-color-scheme: light)", color: tokens.color.light.bg },
+    { media: "(prefers-color-scheme: dark)", color: tokens.color.dark.bg },
   ],
 };
 

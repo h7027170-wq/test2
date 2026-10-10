@@ -10,7 +10,7 @@ import { ChoiceCard, Field, Input, PasswordInput, StrengthMeter } from "@/compon
 import { LoadingBlock, Notice } from "@/components/ui/feedback";
 import { AuthShell } from "@/components/nafess/auth-shell";
 import { RecoveryCodeBox } from "@/components/nafess/recovery-code";
-import { demoOutbox, recoverWithCode, requestEmailReset, resetWithToken } from "@/services/auth";
+import { recoverWithCode, requestEmailReset, resetWithToken } from "@/services/auth";
 import { passwordStrength } from "@/lib/password";
 import type { MailItem } from "@/services/store";
 
@@ -77,18 +77,21 @@ function ChooseMethod() {
           setError(null);
           if (!nickname.trim()) return setError(t("common.required"));
           setBusy(true);
-          if (method === "email") {
-            await requestEmailReset(nickname);
-            const mail = (await demoOutbox()).find((m) => m.kind === "reset") ?? null;
-            setSent(mail);
-          } else {
-            const res = await recoverWithCode(nickname, code, password);
-            if (res.ok) {
-              await refresh();
-              setNewCode(res.newCode);
-            } else setError(res.error === "weak" ? t("signup.weakError") : t("forgot.invalidCode"));
+          try {
+            if (method === "email") {
+              setSent(await requestEmailReset(nickname));
+            } else {
+              const res = await recoverWithCode(nickname, code, password);
+              if (res.ok) {
+                await refresh();
+                setNewCode(res.newCode);
+              } else setError(res.error === "weak" ? t("signup.weakError") : t("forgot.invalidCode"));
+            }
+          } catch {
+            setError(t("common.actionFailed"));
+          } finally {
+            setBusy(false);
           }
-          setBusy(false);
         }}
       >
         {error && (
@@ -177,8 +180,15 @@ function ResetWithToken({ token }: { token: string }) {
         onSubmit={async (e) => {
           e.preventDefault();
           setBusy(true);
-          const res = await resetWithToken(token, password);
-          setBusy(false);
+          let res;
+          try {
+            res = await resetWithToken(token, password);
+          } catch {
+            setError(t("common.actionFailed"));
+            return;
+          } finally {
+            setBusy(false);
+          }
           if (res.ok) {
             await refresh();
             setDone(true);

@@ -97,15 +97,22 @@ export default function SignUpPage() {
     if (Object.keys(e).length) return;
     if (step < 2) return setStep(step + 1);
     setBusy(true);
-    const res = await signUp({
+    let res;
+    try {
+      res = await signUp({
       communities: picked,
       nickname,
       avatar: { shape, tint },
       ageRange: age as AgeRange,
       password,
-      recovery: recovery === "email" ? { type: "email", email } : { type: "code" },
-    });
-    setBusy(false);
+        recovery: recovery === "email" ? { type: "email", email } : { type: "code" },
+      });
+    } catch {
+      setErrors({ form: t("common.actionFailed") });
+      return;
+    } finally {
+      setBusy(false);
+    }
     if (!res.ok) {
       if (res.error === "nickname-taken") {
         setStep(1);

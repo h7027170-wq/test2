@@ -82,7 +82,7 @@ function Writer() {
     return () => clearTimeout(id);
   }, [account, communityId, kind, mood, title, body, veilOn, veil, result]);
 
-  const pii = useMemo(() => findPii(`${title}\n${body}`), [title, body]);
+  const pii = useMemo(() => findPii(`${title}\n${body}\n${veilOn ? veil : ""}`), [title, body, veilOn, veil]);
   const piiKinds = Array.from(new Set(pii.map((p) => p.kind)));
   const community = communities.find((c) => c.id === communityId);
 
@@ -154,8 +154,15 @@ function Writer() {
       return;
     }
     setBusy(true);
-    const res = await createStory({ communityId, kind, mood: mood!, title, body, veil: veilOn ? veil : null });
-    setBusy(false);
+    let res;
+    try {
+      res = await createStory({ communityId, kind, mood: mood!, title, body, veil: veilOn ? veil : null });
+    } catch {
+      setErrors({ failed: t("common.actionFailed") });
+      return;
+    } finally {
+      setBusy(false);
+    }
     if (res.ok) setResult(res);
     else if (res.error === "rate-limited") setErrors({ rate: t("write.errors.rate") });
   }
@@ -208,13 +215,27 @@ function Writer() {
             <p id="mood-help" className="mb-2 text-sm text-mute">
               {t("write.moodHelp")}
             </p>
-            <div className="flex flex-wrap gap-2" role="radiogroup">
-              {moods.map((m) => (
+            <div
+              className="flex flex-wrap gap-2"
+              role="radiogroup"
+              aria-label={t("write.mood")}
+              onKeyDown={(e) => {
+                const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+                if (!step) return;
+                e.preventDefault();
+                const dir = document.documentElement.dir === "rtl" && e.key.startsWith("Arrow") && (e.key === "ArrowLeft" || e.key === "ArrowRight") ? -step : step;
+                const i = (moods.indexOf(mood ?? moods[0]) + dir + moods.length) % moods.length;
+                setMood(moods[i]);
+                (e.currentTarget.children[i] as HTMLElement | undefined)?.focus();
+              }}
+            >
+              {moods.map((m, i) => (
                 <button
                   key={m}
                   type="button"
                   role="radio"
                   aria-checked={mood === m}
+                  tabIndex={mood === m || (!mood && i === 0) ? 0 : -1}
                   onClick={() => setMood(m)}
                   className={cn(
                     "inline-flex min-h-11 items-center gap-2 rounded-pill border-[1.5px] px-4 font-medium transition-colors",

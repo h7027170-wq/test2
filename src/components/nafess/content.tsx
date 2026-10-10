@@ -93,8 +93,8 @@ export function StoryCard({ story, showCommunity = true }: { story: StoryView; s
 export function CommunityCard({ community, compact }: { community: Community; compact?: boolean }) {
   const { t, href } = useI18n();
   return (
-    <article className={cn("group relative flex flex-col rounded-lg border border-line bg-surface p-5 transition-shadow hover:shadow-md", compact ? "gap-2" : "gap-3 sm:p-6")}>
-      <div className="flex items-center justify-between gap-3">
+    <article className={cn("group relative flex min-w-0 flex-col rounded-lg border border-line bg-surface p-5 transition-shadow hover:shadow-md", compact ? "gap-2" : "gap-3 sm:p-6")}>
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <span className={cn("inline-flex size-11 items-center justify-center rounded-full", tintClass[community.tint])} aria-hidden>
           <Icon name="wind" />
         </span>

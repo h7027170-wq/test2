@@ -24,7 +24,14 @@ const patterns: { kind: PiiKind; re: RegExp }[] = [
   },
 ];
 
-export function findPii(text: string): PiiMatch[] {
+// Arabic-Indic (U+0660-0669) and Eastern Arabic-Indic (U+06F0-06F9) digits map 1:1 to ASCII,
+// so match offsets stay valid against the original text.
+function normalizeDigits(text: string) {
+  return text.replace(/[٠-٩۰-۹]/g, (d) => String((d.charCodeAt(0) & 0xf) % 10));
+}
+
+export function findPii(original: string): PiiMatch[] {
+  const text = normalizeDigits(original);
   const found: PiiMatch[] = [];
   for (const { kind, re } of patterns) {
     for (const m of text.matchAll(re)) {
@@ -33,7 +40,7 @@ export function findPii(text: string): PiiMatch[] {
       // Phone pattern must contain at least 8 digits to avoid matching years or counts.
       if (kind === "phone" && m[0].replace(/\D/g, "").length < 8) continue;
       if (found.some((f) => start < f.end && end > f.start)) continue;
-      found.push({ kind, start, end, text: m[0] });
+      found.push({ kind, start, end, text: original.slice(start, end) });
     }
   }
   return found.sort((a, b) => a.start - b.start);

@@ -21,6 +21,7 @@ export default function SignInPage() {
   const [remember, setRemember] = useState(false);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<SignInResult | null>(null);
+  const [failed, setFailed] = useState(false);
   const [missing, setMissing] = useState<{ nickname?: boolean; password?: boolean }>({});
   const alertRef = useRef<HTMLDivElement>(null);
 
@@ -30,8 +31,16 @@ export default function SignInPage() {
     setMissing(m);
     if (m.nickname || m.password) return;
     setBusy(true);
-    const res = await signIn(nickname, password, remember);
-    setBusy(false);
+    setFailed(false);
+    let res: SignInResult;
+    try {
+      res = await signIn(nickname, password, remember);
+    } catch {
+      setFailed(true);
+      return;
+    } finally {
+      setBusy(false);
+    }
     setResult(res);
     if (res.ok) {
       await refresh();
@@ -47,6 +56,11 @@ export default function SignInPage() {
       <h1 className="text-3xl">{t("signin.title")}</h1>
       <p className="mt-2 text-ink-2">{t("signin.lead")}</p>
       <div ref={alertRef} tabIndex={-1} className="outline-none">
+        {failed && (
+          <Notice tone="warm" className="mt-5">
+            <span role="alert">{t("common.actionFailed")}</span>
+          </Notice>
+        )}
         {result && !result.ok && (
           <Notice tone="warm" className="mt-5" icon={result.error === "invalid" ? "alert" : "lock"}>
             <span role="alert">

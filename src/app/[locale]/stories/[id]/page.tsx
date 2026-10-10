@@ -50,7 +50,7 @@ export default function StoryPage({ params }: { params: Promise<{ id: string }> 
   if (!s) return <NotFoundView title={t("story.notFoundTitle")} body={t("story.notFoundBody")} />;
 
   const body = (
-    <div className="grid gap-5 text-lg leading-[1.75] whitespace-pre-line" dir="auto">
+    <div className="grid gap-5 text-lg whitespace-pre-line" dir="auto">
       {s.body}
     </div>
   );
@@ -215,8 +215,10 @@ function StoryActions({ story }: { story: StoryView }) {
         onClick={async () => {
           try {
             await navigator.clipboard.writeText(window.location.href.split("?")[0]);
-          } catch {}
-          toast(t("common.copied"));
+            toast(t("common.copied"));
+          } catch {
+            toast(t("common.copyFailed"));
+          }
         }}
       >
         {t("story.copyLink")}
@@ -274,10 +276,16 @@ function ReportDialog({ open, onClose, target }: { open: boolean; onClose: () =>
             onClick={async () => {
               if (!reason) return setError(t("report.chooseReason"));
               setBusy(true);
-              await report({ ...target, reason, note });
-              setBusy(false);
-              toast(t("report.sent"));
-              close();
+              try {
+                const res = await report({ ...target, reason, note });
+                if (!res.ok) return setError(t("report.rateLimited"));
+                toast(t("report.sent"));
+                close();
+              } catch {
+                setError(t("common.actionFailed"));
+              } finally {
+                setBusy(false);
+              }
             }}
           >
             {t("report.submit")}
@@ -300,7 +308,7 @@ function ReportDialog({ open, onClose, target }: { open: boolean; onClose: () =>
         </div>
       </fieldset>
       <Field label={t("report.note")} optional={t("common.optional")} className="mt-4">
-        {({ id }) => <Textarea id={id} value={note} onChange={(e) => setNote(e.target.value)} maxLength={500} className="min-h-24" />}
+        {({ id }) => <Textarea id={id} value={note} onChange={(e) => setNote(e.target.value)} maxLength={500} className="min-h-24" dir="auto" />}
       </Field>
     </Dialog>
   );

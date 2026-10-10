@@ -15,6 +15,8 @@ describe("findPii", () => {
     ["je m'appelle Lina", "name"],
     ["اسمي ياسين", "name"],
     ["I live at 12 rue Didouche", "address"],
+    ["رقمي ٠٥٥٥ ١٢ ٣٤ ٥٦", "phone"],
+    ["رقمي ۰۵۵۵۱۲۳۴۵۶", "phone"],
   ])("detects %s", (text, kind) => {
     expect(findPii(text).map((m) => m.kind)).toContain(kind);
   });
@@ -24,8 +26,9 @@ describe("findPii", () => {
     expect(findPii("قبل كل امتحان يرجع نفس الإحساس")).toEqual([]);
   });
 
-  it("redacts every match", () => {
+  it("redacts every match, keeping the original text around it", () => {
     expect(redactPii("call 0555 12 34 56 or amel@x.dz")).toBe("call [removed] or [removed]");
+    expect(redactPii("اتصل ٠٥٥٥١٢٣٤٥٦ مساء")).toBe("اتصل [removed] مساء");
   });
 });
 

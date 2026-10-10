@@ -12,7 +12,7 @@ export const tintClass: Record<Tint, string> = {
 export function Badge({ tint, tone, children, className }: { tint?: Tint; tone?: "primary" | "warm" | "neutral"; children: ReactNode; className?: string }) {
   const toneClass = tone === "warm" ? "bg-warm-soft text-warm-ink" : tone === "primary" ? "bg-primary-soft text-primary-ink" : tone === "neutral" ? "bg-surface-2 text-ink-2" : "";
   return (
-    <span className={cn("inline-flex items-center gap-1.5 rounded-pill px-3 py-0.5 text-sm font-medium whitespace-nowrap", tint ? tintClass[tint] : toneClass, className)}>
+    <span className={cn("inline-flex max-w-full items-center gap-1.5 rounded-pill px-3 py-0.5 text-sm font-medium", tint ? tintClass[tint] : toneClass, className)}>
       {children}
     </span>
   );

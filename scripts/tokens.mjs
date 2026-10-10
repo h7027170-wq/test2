@@ -64,10 +64,8 @@ const css =
   "\n" +
   Object.entries(tokens.shadow).map(([k, v]) => `  --shadow-${k}: ${v};`).join("\n") +
   "\n" +
-  `  --spacing: ${tokens.spacing["1"]};
-` +
-  `  --breakpoint-mobile: ${tokens.breakpoint.mobile};
-` +
+  `  --spacing: ${tokens.spacing["1"]};\n` +
+  `  --breakpoint-mobile: ${tokens.breakpoint.mobile};\n` +
   `  --breakpoint-tablet: ${tokens.breakpoint.tablet};\n` +
   `  --breakpoint-desktop: ${tokens.breakpoint.desktop};\n` +
   `  --container-page: ${tokens.layout.container};\n` +
@@ -257,6 +255,7 @@ th{font:500 13px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spaci
 const outputs = [
   [join(root, "src/styles/tokens.css"), css],
   [join(root, "design-system/contrast.json"), JSON.stringify(results, null, 2) + "\n"],
+  [join(root, "design-system/index.html"), html],
 ];
 let stale = false;
 for (const [file, content] of outputs) {

@@ -52,6 +52,16 @@ export default function ModerationPage() {
           <h2 id="audit-h" className="text-xl">
             {t("moderation.audit")}
           </h2>
+          {audit.state.status === "loading" && (
+            <div className="mt-3">
+              <LoadingBlock lines={2} />
+            </div>
+          )}
+          {audit.state.status === "error" && (
+            <div className="mt-3">
+              <ErrorState onRetry={() => audit.reload()} />
+            </div>
+          )}
           {audit.state.status === "ready" &&
             (audit.state.data.length ? (
               <ul className="mt-3 grid gap-3 text-sm">
@@ -131,9 +141,19 @@ function QueueRow({ item, onDone }: { item: QueueItem; onDone: () => Promise<voi
         <div className="mt-4 rounded-md bg-surface-2 p-4">
           <p className="text-sm font-semibold text-warm-ink">{t("moderation.found", { items: kinds.map((k) => t(`write.piiKinds.${k}`)).join(", ") })}</p>
           <p className="mt-2 text-sm font-medium">{t("moderation.willPublish")}</p>
+          {item.redacted.title && (
+            <p className="mt-1 font-semibold" dir="auto">
+              {item.redacted.title}
+            </p>
+          )}
           <p className="mt-1 whitespace-pre-line" dir="auto">
-            {item.redacted}
+            {item.redacted.body}
           </p>
+          {item.redacted.veil && (
+            <p className="mt-2 text-sm text-ink-2">
+              {t("story.veilTitle")}: <span dir="auto">{item.redacted.veil}</span>
+            </p>
+          )}
         </div>
       )}
       <div className="mt-5 flex flex-wrap gap-3">
@@ -142,9 +162,15 @@ function QueueRow({ item, onDone }: { item: QueueItem; onDone: () => Promise<voi
           loading={busy}
           onClick={async () => {
             setBusy(true);
-            await approve(item.type, item.id);
-            toast(t("moderation.approved"));
-            await onDone();
+            try {
+              await approve(item.type, item.id);
+              toast(t("moderation.approved"));
+              await onDone();
+            } catch {
+              toast(t("common.actionFailed"));
+            } finally {
+              setBusy(false);
+            }
           }}
         >
           {hasPii ? t("moderation.approveRedacted") : t("moderation.approve")}

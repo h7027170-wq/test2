@@ -19,7 +19,8 @@ export interface QueueItem {
   reply?: Reply;
   replyAuthor?: string;
   pii: PiiMatch[];
-  redacted: string;
+  /** Exactly what will be published if approved. */
+  redacted: { title?: string; body: string; veil?: string | null };
 }
 
 export async function heldQueue(): Promise<QueueItem[]> {
@@ -34,12 +35,18 @@ export async function heldQueue(): Promise<QueueItem[]> {
   const stories: QueueItem[] = d.stories
     .filter((s) => s.status === "held")
     .map((s) => {
-      const text = `${s.title}\n${s.body}`;
-      return { type: "story", id: s.id, story: view(s.id), pii: findPii(text), redacted: redactPii(s.body) };
+      const text = `${s.title}\n${s.body}\n${s.veil ?? ""}`;
+      return {
+        type: "story",
+        id: s.id,
+        story: view(s.id),
+        pii: findPii(text),
+        redacted: { title: redactPii(s.title), body: redactPii(s.body), veil: s.veil ? redactPii(s.veil) : null },
+      };
     });
   const replies: QueueItem[] = d.replies
     .filter((r) => r.status === "held")
-    .map((r) => ({ type: "reply", id: r.id, story: view(r.storyId), reply: r, replyAuthor: d.accounts.find((a) => a.id === r.authorId)?.nickname, pii: findPii(r.body), redacted: redactPii(r.body) }));
+    .map((r) => ({ type: "reply", id: r.id, story: view(r.storyId), reply: r, replyAuthor: d.accounts.find((a) => a.id === r.authorId)?.nickname, pii: findPii(r.body), redacted: { body: redactPii(r.body) } }));
   return [...stories, ...replies].sort((a, b) => (a.reply?.createdAt ?? a.story.createdAt).localeCompare(b.reply?.createdAt ?? b.story.createdAt));
 }
 
@@ -57,6 +64,7 @@ export async function approve(type: "story" | "reply", id: string) {
     if (!s) return;
     s.title = redactPii(s.title);
     s.body = redactPii(s.body);
+    if (s.veil) s.veil = redactPii(s.veil);
     s.status = "published";
     s.createdAt = now();
     d.notifications.push({ id: newId("n"), accountId: s.authorId, kind: "approved", storyId: s.id, read: false, createdAt: now() });

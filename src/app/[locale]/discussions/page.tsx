@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useI18n } from "@/components/providers/i18n";
-import { ErrorState, Notice, Skeleton } from "@/components/ui/feedback";
+import { EmptyState, ErrorState, Notice, Skeleton } from "@/components/ui/feedback";
 import { Icon } from "@/components/ui/icon";
 import { LiveDot, tintClass } from "@/components/ui/misc";
 import { PageIntro } from "@/components/nafess/content";
@@ -29,7 +29,8 @@ export default function DiscussionsPage() {
           </div>
         )}
         {rooms.state.status === "error" && <ErrorState onRetry={() => rooms.reload()} />}
-        {rooms.state.status === "ready" && (
+        {rooms.state.status === "ready" && rooms.state.data.length === 0 && <EmptyState icon="message" title={t("discussions.noRoomsTitle")} body={t("discussions.noRoomsBody")} />}
+        {rooms.state.status === "ready" && rooms.state.data.length > 0 && (
           <ul className="grid gap-4 sm:grid-cols-2">
             {rooms.state.data.map((r) => (
               <li key={r.id} className="relative flex flex-col gap-3 rounded-lg border border-line bg-surface p-6 transition-shadow hover:shadow-md">

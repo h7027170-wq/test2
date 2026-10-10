@@ -27,7 +27,9 @@
     "errorTitle": "Something didn't load",
     "errorBody": "It's not you. Check your connection and try again.",
     "prototypeBanner": "Prototype: accounts and posts are simulated and stay in this browser.",
-    "resetDemo": "Reset demo data"
+    "resetDemo": "Reset demo data",
+    "actionFailed": "That didn't go through. Your text is still here; please try again.",
+    "copyFailed": "Couldn't copy. Select the link in the address bar instead."
   },
   "nav": {
     "main": "Main",
@@ -87,9 +89,18 @@
     "secondary": "Read stories first",
     "how": {
       "title": "How it works",
-      "step1": { "title": "Pick a nickname", "body": "No real name, no phone number. Your age range and country stay private." },
-      "step2": { "title": "Join your communities", "body": "One community per condition, so you read people who really get it." },
-      "step3": { "title": "Read, react, share", "body": "Post a story, a check-in or a small win when you're ready. Or just read." }
+      "step1": {
+        "title": "Pick a nickname",
+        "body": "No real name, no phone number. Your age range and country stay private."
+      },
+      "step2": {
+        "title": "Join your communities",
+        "body": "One community per condition, so you read people who really get it."
+      },
+      "step3": {
+        "title": "Read, react, share",
+        "body": "Post a story, a check-in or a small win when you're ready. Or just read."
+      }
     },
     "communitiesTitle": "Communities",
     "storiesTitle": "Recent stories",
@@ -131,21 +142,62 @@
     "notFound": "This community doesn't exist.",
     "placeholderNote": "This list is a placeholder until the final list is confirmed.",
     "list": {
-      "depression": { "name": "Depression", "desc": "For the heavy days and the ones that feel a little lighter." },
-      "anxiety": { "name": "Anxiety", "desc": "Worry that won't switch off, and what helps a bit." },
-      "panic": { "name": "Panic attacks", "desc": "When your body sounds the alarm. You are not alone in it." },
-      "schizophrenia": { "name": "Schizophrenia", "desc": "Living with psychosis, treatment, and being understood." },
-      "bipolar": { "name": "Bipolar", "desc": "Highs, lows and the search for steady ground." },
-      "ocd": { "name": "OCD", "desc": "Intrusive thoughts and rituals, without shame." },
-      "trauma": { "name": "Trauma & PTSD", "desc": "Carrying what happened, at your own pace." },
-      "eating": { "name": "Eating disorders", "desc": "Food, body and recovery, with care." },
-      "adhd": { "name": "ADHD", "desc": "Focus, forgetting, and small wins that count." },
-      "grief": { "name": "Grief", "desc": "Missing someone, and learning to carry it." }
-    }
+      "depression": {
+        "name": "Depression",
+        "desc": "For the heavy days and the ones that feel a little lighter."
+      },
+      "anxiety": {
+        "name": "Anxiety",
+        "desc": "Worry that won't switch off, and what helps a bit."
+      },
+      "panic": {
+        "name": "Panic attacks",
+        "desc": "When your body sounds the alarm. You are not alone in it."
+      },
+      "schizophrenia": {
+        "name": "Schizophrenia",
+        "desc": "Living with psychosis, treatment, and being understood."
+      },
+      "bipolar": {
+        "name": "Bipolar",
+        "desc": "Highs, lows and the search for steady ground."
+      },
+      "ocd": {
+        "name": "OCD",
+        "desc": "Intrusive thoughts and rituals, without shame."
+      },
+      "trauma": {
+        "name": "Trauma & PTSD",
+        "desc": "Carrying what happened, at your own pace."
+      },
+      "eating": {
+        "name": "Eating disorders",
+        "desc": "Food, body and recovery, with care."
+      },
+      "adhd": {
+        "name": "ADHD",
+        "desc": "Focus, forgetting, and small wins that count."
+      },
+      "grief": {
+        "name": "Grief",
+        "desc": "Missing someone, and learning to carry it."
+      }
+    },
+    "emptyListTitle": "No communities yet"
   },
   "story": {
-    "kinds": { "story": "Story", "checkin": "Check-in", "win": "Small win" },
-    "moods": { "heavy": "Heavy", "low": "Low", "okay": "Okay", "steady": "Steady", "light": "Light" },
+    "kinds": {
+      "story": "Story",
+      "checkin": "Check-in",
+      "win": "Small win"
+    },
+    "moods": {
+      "heavy": "Heavy",
+      "low": "Low",
+      "okay": "Okay",
+      "steady": "Steady",
+      "light": "Light"
+    },
     "moodLabel": "Feeling {mood}",
     "by": "by {name}",
     "in": "in {community}",
@@ -203,7 +255,8 @@
     "note": "Anything to add?",
     "submit": "Send report",
     "sent": "Thank you. A moderator will look at it.",
-    "chooseReason": "Choose a reason"
+    "chooseReason": "Choose a reason",
+    "rateLimited": "You've sent many reports this hour. Please try again a little later."
   },
   "write": {
     "title": "Write",
@@ -297,7 +350,12 @@
     "noCommunities": "You haven't joined a community yet.",
     "myStories": "My stories",
     "noStories": "You haven't posted yet.",
-    "status": { "published": "Live", "held": "In review", "rejected": "Not published", "removed": "Removed" },
+    "status": {
+      "published": "Live",
+      "held": "In review",
+      "rejected": "Not published",
+      "removed": "Removed"
+    },
     "recovery": "Account recovery",
     "recoveryCode": "Recovery code",
     "recoveryEmail": "Recovery email",
@@ -328,10 +386,22 @@
     "quiet": "Quiet",
     "enter": "Enter room",
     "rooms": {
-      "evening-circle": { "name": "Evening circle", "desc": "Unwinding together after a long day." },
-      "night-owls": { "name": "Night owls", "desc": "For the hours when sleep won't come." },
-      "small-wins": { "name": "Small wins", "desc": "Share anything you managed today." },
-      "remembering": { "name": "Remembering", "desc": "A quiet room for the people we miss." }
+      "evening-circle": {
+        "name": "Evening circle",
+        "desc": "Unwinding together after a long day."
+      },
+      "night-owls": {
+        "name": "Night owls",
+        "desc": "For the hours when sleep won't come."
+      },
+      "small-wins": {
+        "name": "Small wins",
+        "desc": "Share anything you managed today."
+      },
+      "remembering": {
+        "name": "Remembering",
+        "desc": "A quiet room for the people we miss."
+      }
     },
     "emptyTitle": "No messages yet",
     "emptyBody": "Say hello, or just sit with us for a while.",
@@ -340,7 +410,9 @@
     "typing": "{name} is typing",
     "piiWarning": "Careful: this looks like a phone number, email or link. Others here can see it.",
     "guest": "Sign in to join the conversation.",
-    "notFound": "This room doesn't exist."
+    "notFound": "This room doesn't exist.",
+    "noRoomsTitle": "No rooms open",
+    "noRoomsBody": "Rooms will open here soon. Meanwhile, the stories are always there."
   },
   "about": {
     "title": "About Nafess",
@@ -356,11 +428,26 @@
     "title": "Community guidelines",
     "lead": "A few simple rules so everyone can breathe here.",
     "rules": {
-      "anon": { "title": "Stay anonymous", "body": "No real names, phone numbers, addresses, links or social handles, yours or anyone's. Posts with these are held and the details removed." },
-      "kind": { "title": "Be kind", "body": "Reply the way you'd want someone to reply to you on a bad day. No judging, no lecturing." },
-      "advice": { "title": "Share, don't prescribe", "body": "Say what helped you. Don't tell anyone to stop or change treatment." },
-      "veil": { "title": "Use content notes", "body": "If your story touches self-harm, abuse or other hard topics, add a content note." },
-      "help": { "title": "Ask for help", "body": "If someone seems in danger, report the post. A moderator will see it." }
+      "anon": {
+        "title": "Stay anonymous",
+        "body": "No real names, phone numbers, addresses, links or social handles, yours or anyone's. Posts with these are held and the details removed."
+      },
+      "kind": {
+        "title": "Be kind",
+        "body": "Reply the way you'd want someone to reply to you on a bad day. No judging, no lecturing."
+      },
+      "advice": {
+        "title": "Share, don't prescribe",
+        "body": "Say what helped you. Don't tell anyone to stop or change treatment."
+      },
+      "veil": {
+        "title": "Use content notes",
+        "body": "If your story touches self-harm, abuse or other hard topics, add a content note."
+      },
+      "help": {
+        "title": "Ask for help",
+        "body": "If someone seems in danger, report the post. A moderator will see it."
+      }
     }
   },
   "auth": {
@@ -375,7 +462,11 @@
   "signup": {
     "title": "Join Nafess",
     "lead": "Three short steps. No real name, no phone number.",
-    "steps": { "communities": "Communities", "identity": "Identity", "security": "Security" },
+    "steps": {
+      "communities": "Communities",
+      "identity": "Identity",
+      "security": "Security"
+    },
     "stepOf": "Step {n} of {total}",
     "communitiesTitle": "Which communities feel close to you?",
     "communitiesHelp": "Choose at least one. You can change this later.",
@@ -404,7 +495,13 @@
     "under18Body": "We're sorry, you need to be 18 or older to join. If you're struggling, please talk to an adult you trust, and use the help page any time.",
     "securityTitle": "Keep your account safe",
     "passwordHelp": "At least 10 characters. A short sentence works well.",
-    "strength": { "0": "", "1": "Too weak", "2": "Fair", "3": "Good", "4": "Strong" },
+    "strength": {
+      "0": "",
+      "1": "Too weak",
+      "2": "Fair",
+      "3": "Good",
+      "4": "Strong"
+    },
     "strengthLabel": "Strength: {label}",
     "weakError": "Choose a longer password (at least 10 characters, not your nickname).",
     "confirmPassword": "Repeat password",
@@ -481,7 +578,10 @@
     "forbidden": "Only moderators can see this page.",
     "emptyQueue": "Nothing waiting. Thank you for keeping Nafess safe.",
     "emptyReports": "No open reports.",
-    "holdReasons": { "pii": "Identifying details", "sensitive-community": "Every post reviewed" },
+    "holdReasons": {
+      "pii": "Identifying details",
+      "sensitive-community": "Every post reviewed"
+    },
     "found": "Found: {items}",
     "willPublish": "Will be published as:",
     "approve": "Approve",
@@ -502,7 +602,12 @@
     "dismissed": "Report dismissed",
     "removed": "Content removed",
     "auditEmpty": "No decisions yet.",
-    "auditActions": { "approve": "approved", "reject": "rejected", "dismiss": "dismissed a report on", "remove": "removed" },
+    "auditActions": {
+      "approve": "approved",
+      "reject": "rejected",
+      "dismiss": "dismissed a report on",
+      "remove": "removed"
+    },
     "counts": "{held} held · {reports} reports"
   },
   "notFound": {

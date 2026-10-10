@@ -60,6 +60,7 @@ export async function getStory(id: string): Promise<StoryView | null> {
   if (!s) return null;
   if (s.status !== "published" && s.authorId !== viewer?.id && !isStaff(viewer)) return null;
   if (s.status === "removed" && !isStaff(viewer)) return null;
+  if (viewer?.blocked.includes(s.authorId) && !isStaff(viewer)) return null;
   return toView(d, s, viewer);
 }
 
@@ -88,7 +89,8 @@ export async function toggleReaction(storyId: string, kind: ReactionKind): Promi
     d.notifications.push({ id: newId("n"), accountId: s.authorId, kind: "reaction", storyId, actorNickname: a.nickname, read: false, createdAt: now() });
   }
   persist();
-  return s.reactions;
+  // Fresh object and arrays so React sees the change.
+  return Object.fromEntries(Object.entries(s.reactions).map(([k, v]) => [k, [...v]])) as Story["reactions"];
 }
 
 export async function toggleSave(storyId: string): Promise<boolean> {
@@ -108,7 +110,7 @@ export async function listSaved(): Promise<StoryView[]> {
   const d = await db();
   return (d.saved[a.id] ?? [])
     .map((id) => d.stories.find((s) => s.id === id))
-    .filter((s): s is Story => !!s && s.status === "published")
+    .filter((s): s is Story => !!s && s.status === "published" && !a.blocked.includes(s.authorId))
     .map((s) => toView(d, s, a));
 }
 
@@ -173,7 +175,7 @@ export async function createStory(input: NewStory): Promise<CreateStoryResult> {
   const community = seedCommunities.find((c) => c.id === input.communityId);
   if (!community) return { ok: false, error: "invalid" };
   const holdReasons: HoldReason[] = [];
-  if (findPii(`${input.title}\n${input.body}`).length) holdReasons.push("pii");
+  if (findPii(`${input.title}\n${input.body}\n${input.veil ?? ""}`).length) holdReasons.push("pii");
   if (community.sensitivity === "high") holdReasons.push("sensitive-community");
   const status = holdReasons.length ? "held" : "published";
   const id = newId("s");

@@ -1,7 +1,7 @@
 "use client";
 
 import { useI18n } from "@/components/providers/i18n";
-import { Skeleton, ErrorState, Notice } from "@/components/ui/feedback";
+import { Skeleton, ErrorState, Notice, EmptyState } from "@/components/ui/feedback";
 import { CommunityCard, PageIntro } from "@/components/nafess/content";
 import { useAsync } from "@/lib/use-async";
 import { listCommunities } from "@/services/content";
@@ -25,7 +25,8 @@ export default function CommunitiesPage() {
           </div>
         )}
         {state.status === "error" && <ErrorState onRetry={() => reload()} />}
-        {state.status === "ready" && (
+        {state.status === "ready" && state.data.length === 0 && <EmptyState title={t("communities.emptyListTitle")} body={t("communities.placeholderNote")} />}
+        {state.status === "ready" && state.data.length > 0 && (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {state.data.map((c) => (
               <li key={c.id} className="grid">
