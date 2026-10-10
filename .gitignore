@@ -4,3 +4,9 @@
 __pycache__/
 .venv/
 
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+coverage/

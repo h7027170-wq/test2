@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "title": "Nafess — un endroit pour respirer",
+    "description": "Entraide anonyme entre personnes qui vivent avec un trouble psychique. Partagez sous un pseudo, lisez celles et ceux qui vivent la même chose."
+  },
+  "common": {
+    "skip": "Aller au contenu",
+    "brand": "Nafess",
+    "loading": "Chargement…",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "back": "Retour",
+    "continue": "Continuer",
+    "save": "Enregistrer",
+    "confirm": "Confirmer",
+    "optional": "facultatif",
+    "required": "obligatoire",
+    "seeAll": "Tout voir",
+    "signInToContinue": "Connectez-vous pour continuer",
+    "copied": "Lien copié",
+    "placeholderNumber": "000",
+    "justNow": "à l'instant",
+    "errorTitle": "Quelque chose n'a pas chargé",
+    "errorBody": "Ce n'est pas vous. Vérifiez votre connexion et réessayez.",
+    "prototypeBanner": "Prototype : les comptes et les publications sont simulés et restent dans ce navigateur.",
+    "resetDemo": "Réinitialiser la démo",
+    "actionFailed": "Ça n'est pas passé. Votre texte est toujours là ; réessayez.",
+    "copyFailed": "Impossible de copier. Sélectionnez le lien dans la barre d'adresse."
+  },
+  "nav": {
+    "main": "Principal",
+    "home": "Accueil",
+    "communities": "Communautés",
+    "discussions": "Discussions",
+    "write": "Écrire",
+    "saved": "Enregistrés",
+    "notifications": "Notifications",
+    "profile": "Mon profil",
+    "moderation": "Modération",
+    "signIn": "Se connecter",
+    "signUp": "Rejoindre Nafess",
+    "signOut": "Se déconnecter",
+    "menu": "Menu",
+    "account": "Menu du compte",
+    "unread": "{n} non lues"
+  },
+  "prefs": {
+    "language": "Langue",
+    "theme": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "toDark": "Passer au thème sombre",
+    "toLight": "Passer au thème clair"
+  },
+  "crisis": {
+    "button": "Besoin d'aide maintenant",
+    "title": "Si vous êtes en danger maintenant",
+    "lead": "Vous méritez du soutien, maintenant. Nafess est un espace d'entraide, pas un service d'urgence.",
+    "steps": {
+      "safe": "Si vous risquez de passer à l'acte, rendez-vous aux urgences de l'hôpital le plus proche, ou demandez à quelqu'un près de vous de vous y emmener.",
+      "person": "Dites à une personne de confiance ce que vous ressentez, même en une phrase : « Ça ne va pas ce soir. »",
+      "breathe": "Respirez lentement avec nous pendant une minute. Ça ne règle pas tout, mais la minute suivante peut devenir plus facile."
+    },
+    "numbersPending": "Nous afficherons ici les lignes d'écoute locales dès que nos partenaires en Algérie les auront vérifiées. Mieux vaut rien qu'un mauvais numéro.",
+    "breathe": "Respirer une minute",
+    "fullPage": "Ouvrir la page d'aide"
+  },
+  "breath": {
+    "title": "Une minute de calme",
+    "in": "Inspirez",
+    "hold": "Gardez",
+    "out": "Expirez",
+    "start": "Commencer",
+    "stop": "Arrêter",
+    "done": "Voilà une minute. Bravo d'être resté·e avec.",
+    "reducedMotion": "L'animation est désactivée car votre appareil demande moins de mouvement. Suivez les mots.",
+    "remaining": "Encore {n} secondes"
+  },
+  "home": {
+    "eyebrow": "Entraide anonyme",
+    "title": "Un endroit pour respirer, avec des gens qui comprennent",
+    "lead": "Partagez ce que vous vivez avec la dépression, l'anxiété, le deuil et plus encore, sous un pseudo. Lisez celles et ceux qui vivent la même chose. Jamais de vrai nom.",
+    "ctaGuest": "Rejoindre Nafess",
+    "ctaMember": "Écrire quelque chose",
+    "secondary": "Lire d'abord",
+    "how": {
+      "title": "Comment ça marche",
+      "step1": {
+        "title": "Choisissez un pseudo",
+        "body": "Pas de vrai nom, pas de numéro. Votre tranche d'âge et votre pays restent privés."
+      },
+      "step2": {
+        "title": "Rejoignez vos communautés",
+        "body": "Une communauté par trouble, pour lire des gens qui comprennent vraiment."
+      },
+      "step3": {
+        "title": "Lisez, réagissez, partagez",
+        "body": "Publiez une histoire, un point du jour ou une petite victoire quand vous êtes prêt·e. Ou lisez simplement."
+      }
+    },
+    "communitiesTitle": "Communautés",
+    "storiesTitle": "Histoires récentes",
+    "safety": {
+      "title": "La sécurité d'abord",
+      "body": "Les publications qui pourraient vous identifier sont relues par un modérateur avant d'apparaître. Vous pouvez signaler et bloquer à tout moment. L'aide est toujours à portée de main.",
+      "link": "Lire les règles"
+    },
+    "stats": {
+      "members": "membres",
+      "stories": "histoires partagées",
+      "communities": "communautés",
+      "note": "Les chiffres apparaîtront quand nous en aurons de vrais."
+    }
+  },
+  "communities": {
+    "title": "Communautés",
+    "lead": "Une communauté par trouble. Rejoignez celles qui vous parlent ; vous pouvez changer à tout moment.",
+    "members": "{n} membres",
+    "join": "Rejoindre",
+    "leave": "Quitter",
+    "joined": "Membre",
+    "joinedToast": "Vous avez rejoint {name}",
+    "leftToast": "Vous avez quitté {name}",
+    "sensitivity": {
+      "standard": "Ouverte",
+      "sensitive": "Sensible",
+      "high": "Tout est relu"
+    },
+    "sensitivityHelp": {
+      "standard": "Les publications apparaissent tout de suite, sauf si elles contiennent des détails identifiants.",
+      "sensitive": "Sujets difficiles. Ajoutez un avertissement si votre histoire peut être lourde pour d'autres.",
+      "high": "Chaque publication est lue par un modérateur avant d'apparaître, pour protéger cet espace."
+    },
+    "filter": "Afficher",
+    "all": "Tout",
+    "emptyTitle": "Pas encore d'histoires ici",
+    "emptyBody": "Soyez la première personne à partager, même une phrase.",
+    "notFound": "Cette communauté n'existe pas.",
+    "placeholderNote": "Cette liste est provisoire en attendant la liste définitive.",
+    "list": {
+      "depression": {
+        "name": "Dépression",
+        "desc": "Pour les jours lourds et ceux qui le sont un peu moins."
+      },
+      "anxiety": {
+        "name": "Anxiété",
+        "desc": "L'inquiétude qui ne s'éteint pas, et ce qui aide un peu."
+      },
+      "panic": {
+        "name": "Attaques de panique",
+        "desc": "Quand le corps sonne l'alarme. Vous n'êtes pas seul·e."
+      },
+      "schizophrenia": {
+        "name": "Schizophrénie",
+        "desc": "Vivre avec la psychose, le traitement, et être compris·e."
+      },
+      "bipolar": {
+        "name": "Bipolarité",
+        "desc": "Les hauts, les bas, et la recherche d'un sol stable."
+      },
+      "ocd": {
+        "name": "TOC",
+        "desc": "Pensées intrusives et rituels, sans honte."
+      },
+      "trauma": {
+        "name": "Trauma et TSPT",
+        "desc": "Porter ce qui s'est passé, à votre rythme."
+      },
+      "eating": {
+        "name": "Troubles alimentaires",
+        "desc": "Nourriture, corps et rétablissement, avec douceur."
+      },
+      "adhd": {
+        "name": "TDAH",
+        "desc": "Concentration, oublis, et petites victoires qui comptent."
+      },
+      "grief": {
+        "name": "Deuil",
+        "desc": "L'absence de quelqu'un, et apprendre à la porter."
+      }
+    },
+    "emptyListTitle": "Pas encore de communautés"
+  },
+  "story": {
+    "kinds": {
+      "story": "Histoire",
+      "checkin": "Point du jour",
+      "win": "Petite victoire"
+    },
+    "moods": {
+      "heavy": "lourd",
+      "low": "bas",
+      "okay": "ça va",
+      "steady": "stable",
+      "light": "léger"
+    },
+    "moodLabel": "Humeur : {mood}",
+    "by": "par {name}",
+    "in": "dans {community}",
+    "therapist": "Thérapeute",
+    "moderator": "Modération",
+    "veilTitle": "Avertissement",
+    "veilBody": "L'auteur·e a ajouté une note : {note}",
+    "veilShow": "Afficher l'histoire",
+    "veilHide": "Masquer à nouveau",
+    "reactions": {
+      "label": "Réactions",
+      "relate": "Je me reconnais",
+      "strength": "Je t'envoie de la force",
+      "helped": "Ça m'a aidé",
+      "thanks": "Merci",
+      "count": "{label}, {n}"
+    },
+    "save": "Enregistrer",
+    "saved": "Enregistrée",
+    "savedToast": "Enregistrée pour plus tard",
+    "unsavedToast": "Retirée des enregistrés",
+    "copyLink": "Copier le lien",
+    "report": "Signaler",
+    "block": "Bloquer {name}",
+    "blockConfirm": "Vous ne verrez plus les histoires ni les réponses de {name}. Cette personne ne sera pas prévenue.",
+    "blockedToast": "{name} est bloqué·e",
+    "replies": "Réponses",
+    "replyCount": "{n} réponses",
+    "noReplies": "Pas encore de réponse. Quelques mots doux peuvent compter beaucoup.",
+    "reply": "Répondre",
+    "replyTo": "Répondre à {name}",
+    "replyPlaceholder": "Écrivez quelque chose de bienveillant…",
+    "replySend": "Envoyer",
+    "replyHeld": "Votre réponse contient des détails qui pourraient identifier quelqu'un. Un modérateur la vérifiera avant qu'elle apparaisse.",
+    "replyPosted": "Réponse publiée",
+    "relate": "Je me reconnais",
+    "notFoundTitle": "Cette histoire n'est pas disponible",
+    "notFoundBody": "Elle a peut-être été retirée, ou elle attend encore d'être relue.",
+    "heldBanner": "Vous seul·e voyez cette histoire pour l'instant. Un modérateur la relit.",
+    "rejectedBanner": "Cette histoire n'a pas été publiée. Raison : {reason}",
+    "guestPrompt": "Rejoignez Nafess pour réagir, répondre et enregistrer des histoires.",
+    "readMore": "Lire"
+  },
+  "report": {
+    "title": "Signaler",
+    "lead": "Les signalements sont anonymes. Un modérateur va regarder.",
+    "reason": "Quel est le problème ?",
+    "reasons": {
+      "identifying": "Ça donne des détails qui pourraient identifier quelqu'un",
+      "harmful": "Ça encourage l'automutilation ou c'est dangereux",
+      "harassment": "C'est blessant ou harcelant",
+      "spam": "C'est du spam ou de la publicité",
+      "other": "Autre chose"
+    },
+    "note": "Quelque chose à ajouter ?",
+    "submit": "Envoyer le signalement",
+    "sent": "Merci. Un modérateur va regarder.",
+    "chooseReason": "Choisissez une raison",
+    "rateLimited": "Vous avez envoyé beaucoup de signalements cette heure-ci. Réessayez un peu plus tard."
+  },
+  "write": {
+    "title": "Écrire",
+    "lead": "Prenez votre temps. Rien n'est publié tant que vous ne le décidez pas.",
+    "community": "Communauté",
+    "communityHelp": "Où voulez-vous publier ?",
+    "kind": "De quoi s'agit-il ?",
+    "mood": "Comment vous sentez-vous ?",
+    "moodHelp": "Choisissez ce qui est le plus proche de maintenant.",
+    "prompts": "Besoin d'un point de départ ?",
+    "promptList": {
+      "today": "Aujourd'hui, j'ai remarqué…",
+      "smallWin": "Une petite victoire cette semaine :",
+      "helped": "Quelque chose qui m'a aidé :",
+      "wish": "J'aimerais que les gens sachent…",
+      "body": "En ce moment, mon corps ressent…"
+    },
+    "titleLabel": "Titre",
+    "titlePlaceholder": "Quelques mots",
+    "body": "Votre histoire",
+    "bodyHelp": "Au moins 20 caractères.",
+    "veil": "Ajouter un avertissement",
+    "veilHelp": "Cache votre histoire derrière une courte note pour que les lecteurs choisissent. Pour les sujets difficiles.",
+    "veilLabel": "Avertissement",
+    "veilPlaceholder": "ex. Mentions d'automutilation",
+    "piiTitle": "Ceci pourrait vous identifier",
+    "piiBody": "Nous avons trouvé {items}. Votre histoire sera relue par un modérateur, qui retirera ces détails avant publication.",
+    "piiKinds": {
+      "phone": "un numéro de téléphone",
+      "email": "une adresse e-mail",
+      "handle": "un identifiant de réseau social",
+      "link": "un lien",
+      "name": "un nom",
+      "address": "une adresse"
+    },
+    "sensitiveNote": "Dans {community}, chaque publication est lue par un modérateur avant d'apparaître.",
+    "draftSaving": "Enregistrement du brouillon…",
+    "draftSaved": "Brouillon enregistré {time}",
+    "draftNone": "Les brouillons s'enregistrent tout seuls",
+    "draftRestored": "Nous avons restauré votre brouillon.",
+    "discard": "Supprimer le brouillon",
+    "discardConfirm": "Supprimer ce brouillon ? C'est définitif.",
+    "publish": "Publier",
+    "publishing": "Publication…",
+    "heldTitle": "En attente de relecture",
+    "heldBody": "Merci d'avoir partagé. Un modérateur lira d'abord votre histoire ; vous recevrez une notification quand elle sera en ligne.",
+    "heldReasons": {
+      "pii": "Elle contient des détails qui pourraient vous identifier.",
+      "sensitive-community": "Chaque publication de cette communauté est relue."
+    },
+    "postedTitle": "Votre histoire est en ligne",
+    "postedBody": "Merci d'avoir partagé. Des personnes qui comprennent peuvent maintenant la lire.",
+    "viewStory": "Voir l'histoire",
+    "writeAnother": "En écrire une autre",
+    "errors": {
+      "community": "Choisissez une communauté.",
+      "mood": "Choisissez comment vous vous sentez.",
+      "title": "Ajoutez un titre.",
+      "body": "Écrivez au moins 20 caractères.",
+      "rate": "Vous avez publié 5 histoires aujourd'hui. Respirez, vous pourrez publier demain.",
+      "summary": "Merci de corriger {n} points avant de publier."
+    },
+    "guestTitle": "Connectez-vous pour écrire",
+    "guestBody": "Il faut un pseudo pour publier. Ça prend une minute, sans vrai nom."
+  },
+  "saved": {
+    "title": "Histoires enregistrées",
+    "lead": "Vous seul·e voyez ce que vous enregistrez.",
+    "emptyTitle": "Rien d'enregistré pour l'instant",
+    "emptyBody": "Appuyez sur Enregistrer sur une histoire à relire plus tard.",
+    "browse": "Parcourir les communautés"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAll": "Tout marquer comme lu",
+    "emptyTitle": "Tout est calme",
+    "emptyBody": "Quand quelqu'un répond ou réagit à votre histoire, vous le verrez ici.",
+    "kinds": {
+      "reply": "{name} a répondu à votre histoire",
+      "reaction": "{name} a réagi à votre histoire",
+      "approved": "Votre histoire a été approuvée et est en ligne",
+      "rejected": "Votre histoire n'a pas été publiée",
+      "welcome": "Bienvenue sur Nafess. Prenez votre temps pour découvrir."
+    },
+    "unread": "Non lue"
+  },
+  "profile": {
+    "title": "Mon profil",
+    "private": "Vous seul·e voyez cette page. Les autres ne voient que votre pseudo et votre avatar.",
+    "communities": "Mes communautés",
+    "noCommunities": "Vous n'avez rejoint aucune communauté.",
+    "myStories": "Mes histoires",
+    "noStories": "Vous n'avez encore rien publié.",
+    "status": {
+      "published": "En ligne",
+      "held": "En relecture",
+      "rejected": "Non publiée",
+      "removed": "Retirée"
+    },
+    "recovery": "Récupération du compte",
+    "recoveryCode": "Code de récupération",
+    "recoveryEmail": "E-mail de récupération",
+    "recoveryNone": "Aucune méthode de récupération. Si vous oubliez votre mot de passe, vous ne pourrez pas revenir.",
+    "recoveryCodeSet": "Vous avez un code de récupération. Nous ne pouvons pas le réafficher.",
+    "recoveryEmailSet": "Un e-mail de récupération privé est enregistré.",
+    "emailUnverified": "Pas encore vérifié",
+    "emailVerified": "Vérifié",
+    "newCode": "Créer un nouveau code de récupération",
+    "newCodeConfirm": "Votre ancien code ne fonctionnera plus.",
+    "privacy": "Confidentialité",
+    "privacyPoints": {
+      "nickname": "Votre pseudo et votre avatar sont les seules choses que les autres voient.",
+      "age": "Votre tranche d'âge est privée et sert seulement à réserver Nafess aux adultes.",
+      "email": "Si vous ajoutez un e-mail de récupération, il est chiffré et jamais montré.",
+      "delete": "Vous pouvez demander la suppression de votre compte et de tout ce que vous avez publié."
+    },
+    "blocked": "Membres bloqués",
+    "noBlocked": "Vous n'avez bloqué personne.",
+    "unblock": "Débloquer",
+    "ageRange": "Tranche d'âge"
+  },
+  "discussions": {
+    "title": "Discussions",
+    "lead": "De petits salons pour parler en direct. Soyez doux ; ce qui se dit ici reste ici.",
+    "mockNote": "Aperçu : les salons utilisent des messages d'exemple pour l'instant. Vos messages restent dans cet onglet.",
+    "live": "En direct",
+    "quiet": "Calme",
+    "enter": "Entrer",
+    "rooms": {
+      "evening-circle": {
+        "name": "Cercle du soir",
+        "desc": "Se poser ensemble après une longue journée."
+      },
+      "night-owls": {
+        "name": "Oiseaux de nuit",
+        "desc": "Pour les heures où le sommeil ne vient pas."
+      },
+      "small-wins": {
+        "name": "Petites victoires",
+        "desc": "Partagez tout ce que vous avez réussi aujourd'hui."
+      },
+      "remembering": {
+        "name": "Se souvenir",
+        "desc": "Un salon calme pour celles et ceux qui nous manquent."
+      }
+    },
+    "emptyTitle": "Pas encore de messages",
+    "emptyBody": "Dites bonjour, ou restez simplement un moment avec nous.",
+    "composer": "Message",
+    "send": "Envoyer",
+    "typing": "{name} écrit",
+    "piiWarning": "Attention : cela ressemble à un numéro, un e-mail ou un lien. Les autres ici peuvent le voir.",
+    "guest": "Connectez-vous pour participer.",
+    "notFound": "Ce salon n'existe pas.",
+    "noRoomsTitle": "Aucun salon ouvert",
+    "noRoomsBody": "Des salons ouvriront ici bientôt. En attendant, les histoires sont toujours là."
+  },
+  "about": {
+    "title": "À propos de Nafess",
+    "lead": "Nafess veut dire « souffle ». C'est un endroit pour partager ce que vous vivez, sous un pseudo, avec des gens qui comprennent.",
+    "what": "Ce qu'est Nafess",
+    "whatBody": "De l'entraide : des personnes qui vivent avec un trouble se soutiennent, des modérateurs protègent l'espace et des thérapeutes répondent parfois.",
+    "whatNot": "Ce que Nafess n'est pas",
+    "whatNotBody": "Ce n'est ni une thérapie, ni un diagnostic, ni un service d'urgence. Si vous êtes en danger, utilisez le bouton d'aide en haut de chaque page.",
+    "languages": "Arabe, français et anglais",
+    "languagesBody": "Écrivez dans la langue où vous ressentez. La darija algérienne arrive bientôt."
+  },
+  "guidelines": {
+    "title": "Règles de la communauté",
+    "lead": "Quelques règles simples pour que chacun·e puisse respirer ici.",
+    "rules": {
+      "anon": {
+        "title": "Restez anonyme",
+        "body": "Pas de vrais noms, numéros, adresses, liens ou identifiants de réseaux sociaux, ni les vôtres ni ceux des autres. Les publications qui en contiennent sont relues et ces détails retirés."
+      },
+      "kind": {
+        "title": "Soyez bienveillant·e",
+        "body": "Répondez comme vous aimeriez qu'on vous réponde un mauvais jour. Sans juger, sans faire la leçon."
+      },
+      "advice": {
+        "title": "Partagez, ne prescrivez pas",
+        "body": "Dites ce qui vous a aidé. Ne dites à personne d'arrêter ou de changer un traitement."
+      },
+      "veil": {
+        "title": "Ajoutez des avertissements",
+        "body": "Si votre histoire parle d'automutilation, de violences ou d'autres sujets difficiles, ajoutez un avertissement."
+      },
+      "help": {
+        "title": "Demandez de l'aide",
+        "body": "Si quelqu'un semble en danger, signalez la publication. Un modérateur la verra."
+      }
+    }
+  },
+  "auth": {
+    "nickname": "Pseudo",
+    "password": "Mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "remember": "Rester connecté·e 30 jours",
+    "rememberHelp": "À éviter sur un appareil partagé.",
+    "privateDevice": "Sur un appareil partagé, déconnectez-vous à la fin."
+  },
+  "signup": {
+    "title": "Rejoindre Nafess",
+    "lead": "Trois petites étapes. Pas de vrai nom, pas de numéro.",
+    "steps": {
+      "communities": "Communautés",
+      "identity": "Identité",
+      "security": "Sécurité"
+    },
+    "stepOf": "Étape {n} sur {total}",
+    "communitiesTitle": "Quelles communautés vous parlent ?",
+    "communitiesHelp": "Choisissez-en au moins une. Vous pourrez changer plus tard.",
+    "communitiesError": "Choisissez au moins une communauté.",
+    "identityTitle": "Comment les autres vous verront-ils ?",
+    "nicknameHelp": "3 à 24 lettres, chiffres, tiret, point ou tiret bas. Jamais votre vrai nom.",
+    "checking": "Vérification…",
+    "available": "Disponible",
+    "taken": "Déjà pris",
+    "nicknameErrors": {
+      "short": "Au moins 3 caractères.",
+      "long": "24 caractères maximum.",
+      "chars": "Seulement des lettres, chiffres, tiret, point et tiret bas.",
+      "looks-like-contact": "Cela ressemble à un numéro ou un e-mail. Choisissez autre chose.",
+      "taken": "Ce pseudo est déjà pris."
+    },
+    "avatar": "Avatar",
+    "avatarHelp": "Une forme et une couleur, jamais une photo.",
+    "avatarShape": "Forme",
+    "avatarColor": "Couleur",
+    "avatarOption": "Option {n}",
+    "ageRange": "Tranche d'âge",
+    "ageHelp": "Privée. Nafess est réservé aux adultes (18 ans et plus).",
+    "under18": "Moins de 18 ans",
+    "under18Title": "Nafess est réservé aux adultes",
+    "under18Body": "Désolé, il faut avoir 18 ans ou plus pour s'inscrire. Si c'est difficile en ce moment, parlez à un adulte de confiance, et utilisez la page d'aide quand vous voulez.",
+    "securityTitle": "Protégez votre compte",
+    "passwordHelp": "Au moins 10 caractères. Une petite phrase marche bien.",
+    "strength": {
+      "0": "",
+      "1": "Trop faible",
+      "2": "Correct",
+      "3": "Bon",
+      "4": "Solide"
+    },
+    "strengthLabel": "Solidité : {label}",
+    "weakError": "Choisissez un mot de passe plus long (au moins 10 caractères, pas votre pseudo).",
+    "confirmPassword": "Répétez le mot de passe",
+    "mismatch": "Les mots de passe ne correspondent pas.",
+    "recovery": "Si vous oubliez votre mot de passe",
+    "recoveryCode": "Code de récupération",
+    "recoveryCodeDesc": "Nous vous montrons un code une seule fois. Totalement anonyme.",
+    "recoveryEmail": "E-mail de récupération",
+    "recoveryEmailDesc": "Nous vous envoyons un lien. L'e-mail est privé et chiffré.",
+    "email": "E-mail",
+    "emailError": "Saisissez une adresse e-mail valide.",
+    "agree": "J'ai lu les règles de la communauté",
+    "agreeError": "Merci de confirmer que vous avez lu les règles.",
+    "submit": "Créer mon compte",
+    "creating": "Création…",
+    "codeTitle": "Gardez votre code de récupération",
+    "codeBody": "C'est le seul moyen de revenir si vous oubliez votre mot de passe. Nous ne pourrons pas le réafficher.",
+    "copyCode": "Copier le code",
+    "codeCopied": "Code copié",
+    "codeSaved": "J'ai gardé mon code en lieu sûr",
+    "doneTitle": "Bienvenue sur Nafess",
+    "doneBody": "Votre compte est prêt. Prenez votre temps pour découvrir.",
+    "verifyNote": "Nous avons envoyé un lien à {email}. Ouvrez-le pour confirmer votre e-mail de récupération.",
+    "start": "Commencer",
+    "haveAccount": "Déjà un compte ?",
+    "genericError": "Nous n'avons pas pu créer votre compte. Réessayez."
+  },
+  "signin": {
+    "title": "Bon retour",
+    "lead": "Connectez-vous avec votre pseudo.",
+    "submit": "Se connecter",
+    "signingIn": "Connexion…",
+    "invalid": "Ce pseudo et ce mot de passe ne correspondent pas. Vérifiez et réessayez.",
+    "locked": "Trop d'essais. Pour votre sécurité, la connexion à ce pseudo est suspendue pendant {n} minutes.",
+    "lockedHelp": "Mot de passe oublié ? Vous pouvez récupérer votre compte.",
+    "suspended": "Ce compte est suspendu. Si vous pensez que c'est une erreur, contactez la modération.",
+    "forgot": "Mot de passe oublié ?",
+    "noAccount": "Nouveau ici ?",
+    "demo": "Comptes de démo : demo-member, demo-moderator, demo-suspended. Mot de passe : {pw}"
+  },
+  "forgot": {
+    "title": "Récupérer votre compte",
+    "lead": "Choisissez comment vous avez configuré la récupération.",
+    "withCode": "J'ai mon code de récupération",
+    "withEmail": "M'envoyer un lien par e-mail",
+    "code": "Code de récupération",
+    "codeHelp": "16 caractères, comme ABCD-EFGH-JKLM-NPQR.",
+    "newPassword": "Nouveau mot de passe",
+    "submitCode": "Enregistrer le nouveau mot de passe",
+    "invalidCode": "Ce pseudo et ce code ne correspondent pas.",
+    "emailSent": "Si ce pseudo a un e-mail de récupération, nous y avons envoyé un lien. Il est valable une heure.",
+    "sendLink": "Envoyer le lien",
+    "resetTitle": "Choisissez un nouveau mot de passe",
+    "expired": "Ce lien a expiré ou a déjà été utilisé. Demandez-en un nouveau.",
+    "doneTitle": "Mot de passe modifié",
+    "doneBody": "Vous êtes connecté·e. Voici votre nouveau code de récupération ; l'ancien ne fonctionne plus.",
+    "doneBodyEmail": "Vous êtes connecté·e avec votre nouveau mot de passe.",
+    "demoInbox": "Boîte de réception du prototype",
+    "demoInboxHelp": "Aucun vrai e-mail n'est envoyé dans ce prototype. Votre dernier lien :",
+    "openLink": "Ouvrir le lien"
+  },
+  "verify": {
+    "title": "Confirmez votre e-mail",
+    "checking": "Vérification de votre lien…",
+    "verified": "Votre e-mail de récupération est confirmé.",
+    "expired": "Ce lien a expiré ou a déjà été utilisé.",
+    "missing": "Ce lien est incomplet."
+  },
+  "moderation": {
+    "title": "Modération",
+    "queue": "Contenus en attente",
+    "reports": "Signalements",
+    "audit": "Décisions récentes",
+    "forbidden": "Seuls les modérateurs peuvent voir cette page.",
+    "emptyQueue": "Rien en attente. Merci de protéger Nafess.",
+    "emptyReports": "Aucun signalement ouvert.",
+    "holdReasons": {
+      "pii": "Détails identifiants",
+      "sensitive-community": "Tout est relu"
+    },
+    "found": "Trouvé : {items}",
+    "willPublish": "Sera publié ainsi :",
+    "approve": "Approuver",
+    "approveRedacted": "Retirer les détails et approuver",
+    "reject": "Refuser",
+    "rejectTitle": "Refuser cette publication",
+    "rejectReason": "Raison (montrée à l'auteur·e)",
+    "rejectReasonError": "Écrivez une courte raison.",
+    "approved": "Approuvé",
+    "rejected": "Refusé",
+    "replyTo": "Réponse sur « {title} »",
+    "reportedBy": "Signalé par {name}",
+    "author": "Auteur·e : {name}",
+    "dismiss": "Classer",
+    "remove": "Retirer le contenu",
+    "removeTitle": "Retirer ce contenu",
+    "removeReason": "Raison (pour le journal)",
+    "dismissed": "Signalement classé",
+    "removed": "Contenu retiré",
+    "auditEmpty": "Aucune décision pour l'instant.",
+    "auditActions": {
+      "approve": "a approuvé",
+      "reject": "a refusé",
+      "dismiss": "a classé un signalement sur",
+      "remove": "a retiré"
+    },
+    "counts": "{held} en attente · {reports} signalements"
+  },
+  "notFound": {
+    "title": "Cette page n'est pas là",
+    "body": "Le lien est peut-être ancien, ou la page a changé de place. Retournons vers un endroit calme.",
+    "home": "Retour à l'accueil"
+  },
+  "footer": {
+    "tagline": "De l'entraide, pas un service d'urgence.",
+    "about": "À propos",
+    "guidelines": "Règles",
+    "help": "Obtenir de l'aide",
+    "review": "Les textes en arabe et en français attendent une relecture par des locuteurs natifs."
+  }
+}

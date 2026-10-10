@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --font-display: var(--font-display-latin), Georgia, serif;
+  --font-sans: var(--font-body-latin), system-ui, sans-serif;
+  --font-mono: var(--font-mono-latin), ui-monospace, monospace;
+}
+
+/* Arabic pages swap families and line heights. Latin words inside Arabic still use the Latin body face. */
+html[lang="ar"] {
+  --font-display: var(--font-display-arabic), var(--font-display-latin), serif;
+  --font-sans: var(--font-body-arabic), var(--font-body-latin), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--lh-latin-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  html[lang="ar"] body {
+    line-height: var(--lh-arabic-body);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: var(--lh-latin-heading);
+    letter-spacing: var(--tracking-latin-heading);
+    text-wrap: balance;
+  }
+  html[lang="ar"] :is(h1, h2, h3, h4) {
+    line-height: var(--lh-arabic-heading);
+    letter-spacing: 0;
+    font-weight: 700;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--color-primary-soft);
+    color: var(--color-ink);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-placeholder);
+    opacity: 1;
+  }
+  dialog::backdrop {
+    background: var(--color-overlay);
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer utilities {
+  /* Directional icons mirror in RTL; logos, play buttons and checkmarks never use this. */
+  [dir="rtl"] .flip-rtl {
+    transform: scaleX(-1);
+  }
+  .tag-label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+  html[lang="ar"] .tag-label {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-primary) 0%, var(--color-sky-ink) 55%, var(--color-lilac-ink) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: var(--color-glass);
+    backdrop-filter: saturate(1.4) blur(14px);
+  }
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: var(--gutter-mobile);
+  }
+  @media (min-width: 40rem) {
+    .container-page {
+      padding-inline: var(--gutter-desktop);
+    }
+  }
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(0.72); }
+  40%, 55% { transform: scale(1); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--color-surface-2) 25%, var(--color-line) 50%, var(--color-surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+.animate-blink { animation: blink 1.4s infinite both; }
+.animate-breathe { animation: breathe var(--breath-cycle) var(--ease-calm) infinite; }
+.animate-fade-up { animation: fade-up var(--motion-slow) var(--ease-calm) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
